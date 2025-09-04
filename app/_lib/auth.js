@@ -1,49 +1,32 @@
 import NextAuth from "next-auth";
-import Google from "next-auth/providers/google";
-import { createGuest, getGuest } from "./data-service";
+import GoogleProvider from "next-auth/providers/google";
+import { createGuest, getGuest } from "../../../lib/data-service";
 
-const authConfig = {
+const handler = NextAuth({
   providers: [
-    Google({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
   callbacks: {
-    authorized({ auth, request }) {
-      return !!auth?.user;
-    },
-    async signIn({ user, account, profile }) {
-      try {
-        const existingGuest = await getGuest(user.email);
-
-        if (!existingGuest) {
-          await createGuest({
-            email: user.email,
-            fullName: user.name,
-          });
-        }
-
-        return true;
-      } catch {
-        return false;
+    async signIn({ user }) {
+      const existingGuest = await getGuest(user.email);
+      if (!existingGuest) {
+        await createGuest({ email: user.email, fullName: user.name });
       }
+      return true;
     },
-    async session({ session, user }) {
+    async session({ session }) {
       const guest = await getGuest(session.user.email);
       session.user.guestId = guest.id;
       return session;
     },
   },
-
   pages: {
     signIn: "/login",
   },
-};
+  secret: process.env.AUTH_SECRET,
+});
 
-export const {
-  auth,
-  signIn,
-  signOut,
-  handlers: { GET, POST },
-} = NextAuth(authConfig);
+export { handler as GET, handler as POST };
