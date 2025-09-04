@@ -16,7 +16,7 @@ export default async function Page() {
     <div className="grid grid-cols-5 gap-x-24 gap-y-32 text-lg items-center">
       <div className="col-span-3">
         <h1 className="text-4xl mb-10 text-accent-400 font-medium">
-          Welcome to The Wild Oasis
+          Welcome to Snowpine Lodges
         </h1>
 
         <div className="space-y-8">
@@ -60,7 +60,7 @@ export default async function Page() {
           src="/about-2.jpg"
           fill
           className="object-cover"
-          alt="Family that manages The Wild Oasis"
+          alt="Family that manages Snowpine Lodges"
         />
       </div>
 
@@ -71,7 +71,7 @@ export default async function Page() {
 
         <div className="space-y-8">
           <p>
-            Since 1962, The Wild Oasis has been a cherished
+            Since 1962, Snowpine Lodges has been a cherished
             family-run retreat. Started by our grandparents,
             this haven has been nurtured with love and care,
             passing down through our family as a testament
@@ -80,7 +80,7 @@ export default async function Page() {
           </p>
           <p>
             Over the years, we&apos;ve maintained the
-            essence of The Wild Oasis, blending the timeless
+            essence of Snowpine Lodges, blending the timeless
             beauty of the mountains with the personal touch
             only a family business can offer. Here,
             you&apos;re not just a guest; you&apos;re part

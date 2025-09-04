@@ -14,8 +14,8 @@ import { ReservationProvider } from "./_components/ReservationContext";
 
 export const metadata = {
   title: {
-    template: "%s | The Wild Oasis",
-    default: "Welcome | The Wild Oasis",
+    template: "%s | Snowpine Lodges",
+    default: "Welcome | Snowpine Lodges",
   },
 
   description:
