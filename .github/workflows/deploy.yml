@@ -1,0 +1,41 @@
+name: Deploy Next.js to VPS
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          timeout: 30m
+          script: |
+            # Navigate to project root
+            cd /var/www/the_wild_oasis
+
+            # Fetch latest code
+            git fetch origin main
+            git reset --hard origin/main
+
+            # Clean old dependencies and build
+            rm -rf node_modules .next
+            npm cache clean --force
+
+            # Install dependencies
+            npm install
+
+            # Build Next.js project
+            npm run build
+
+            # Restart or start the app with PM2
+            pm2 restart all || true
