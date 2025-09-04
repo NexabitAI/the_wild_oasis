@@ -5,11 +5,10 @@ import { createGuest, getGuest } from "./data-service";
 const authConfig = {
   providers: [
     Google({
-      clientId: process.env.AUTH_GOOGLE_ID,
-      clientSecret: process.env.AUTH_GOOGLE_SECRET,
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
-
   callbacks: {
     authorized({ auth, request }) {
       return !!auth?.user;
