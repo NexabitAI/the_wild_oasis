@@ -1,4 +1,4 @@
-<h1 align="center" id="title">The Wild Oasis Website</h1>
+<h1 align="center" id="title">Snowpine Lodges Website</h1>
 
 <p align="center"><img src="https://i.ibb.co/KWrXgQD/1.png" alt="project-image"></p>
 
