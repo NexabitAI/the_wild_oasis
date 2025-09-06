@@ -54,7 +54,7 @@ export default function Page() {
 
         <div className="space-y-8">
           <p>
-            Since 1962, Snowpine Lodges has been a cherished
+            Since 1962 Snowpine Lodges has been a cherished
             family-run retreat. Started by our grandparents,
             this haven has been nurtured with love and care,
             passing down through our family as a testament
