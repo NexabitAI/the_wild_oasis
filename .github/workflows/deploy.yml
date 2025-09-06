@@ -28,7 +28,6 @@ jobs:
             git reset --hard origin/main
 
             # Clean old dependencies and build
-            rm -rf node_modules .next
             npm cache clean --force
 
             # Install dependencies
